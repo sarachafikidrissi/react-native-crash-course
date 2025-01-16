@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "test",
-    "slug": "test",
+    "name": "crash-course",
+    "slug": "crash-course",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "crash-course",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
