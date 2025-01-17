@@ -7,7 +7,7 @@ export default function App() {
     <View  className="flex-1 justify-center items-center">
       <Text className="text-3xl font-pblack" >Index.js file</Text>
       <StatusBar style="auto" />
-      <Link href={"/profile"} style={{ color: 'blue' }}>Go to profile</Link>
+      <Link href={"/home"} style={{ color: 'blue' }}>Go to home</Link>
     </View>
   );
 }
