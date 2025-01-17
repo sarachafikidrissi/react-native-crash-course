@@ -10,7 +10,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
         source={icon}
         resizeMode="contain"
         tintColor={color}
-        className="w-8 h-8"
+        className="w-8 h-8 "
       />
       <Text
         className={`text-sm ${
@@ -30,12 +30,15 @@ const TabLayout = () => {
         screenOptions={{
           tabBarShowLabel: false, //* hides the default title
           tabBarActiveTintColor: "#ffa001", //* sets the color of icon when it is active
-          tabBarInactiveTintColor: '#CDCDE0', //* set's the icon color when it's inactive
+          tabBarInactiveTintColor: "#CDCDE0", //* set's the icon color when it's inactive
           tabBarStyle: {
             backgroundColor: "#161622",
             borderTopWidth: 1,
             borderTopColor: "#232533",
             height: 84,
+          },
+          tabBarItemStyle: {
+            marginTop: 18
           },
         }}
       >
