@@ -4,8 +4,16 @@ import { Link, Redirect, router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../constants";
 import CustomButton from "../components/CustomButton";
+import { useGlobalContext } from "../context/GlobalProvider";
 
 export default function App() {
+
+  const { isLoggedIn, isLoading } = useGlobalContext();
+  console.log(isLoggedIn);
+  
+
+  //^ redirect user to home in case he is already logged in instead of rediricting him to onboading screen 
+  if (isLoggedIn && !isLoading) return <Redirect href="/home"/>
   return (
     // <View  className="flex-1 justify-center items-center">
     //   <Text className="text-3xl font-pblack" >Index.js file</Text>

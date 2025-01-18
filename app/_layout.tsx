@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { Slot, SplashScreen, Stack, Tabs } from 'expo-router'
 import "../global.css";
 import { useFonts } from 'expo-font';
+import GlobalProvider from '../context/GlobalProvider'
 
 SplashScreen.preventAutoHideAsync(); //* keeps the splash screen visible until assets finish loading.
 const RootLayout = () => {
@@ -27,18 +28,20 @@ const RootLayout = () => {
 
   }, [fontsLoaded, error])
 
-  if (!fontsLoaded && !error){
+  if (!fontsLoaded && !error) {
     return null;
   }
   return (
 
     //*stack navigation
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} /> //* to remove the top bar of auth routes/screens
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} /> 
-      <Stack.Screen name="/search/[query]" options={{ headerShown: false }} /> 
-    </Stack>
+    <GlobalProvider>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} /> //* to remove the top bar of auth routes/screens
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="/search/[query]" options={{ headerShown: false }} />
+      </Stack>
+    </GlobalProvider>
 
     //* <Slot /> for Custom Layout
     // <>
