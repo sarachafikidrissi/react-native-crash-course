@@ -12,7 +12,7 @@ export default function App() {
   console.log(isLoggedIn);
   
 
-  //^ redirect user to home in case he is already logged in instead of rediricting him to onboading screen 
+  //^ redirect user to home in case he is already logged in instead of rediricting him to onboarding screen 
   if (isLoggedIn && !isLoading) return <Redirect href="/home"/>
   return (
     // <View  className="flex-1 justify-center items-center">
