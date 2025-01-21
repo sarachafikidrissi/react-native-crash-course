@@ -10,7 +10,8 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "package": "com.rn.course" 
+      "package": "com.rn.course"
+   
     },
     "android": {
       "adaptiveIcon": {
