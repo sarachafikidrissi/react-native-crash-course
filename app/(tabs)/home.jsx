@@ -1,11 +1,18 @@
-import { View, Text, FlatList, Image, RefreshControl, Alert } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  RefreshControl,
+  Alert,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../../constants";
 import SearchInput from "../../components/SearchInput";
-import Trending from "../../components/Trending";
 import EmptyState from "../../components/EmptyState";
-import { useState } from "react";
+import Trending from "../../components/Trending";
+import VideoCard from "../../components/VideoCard";
 import { getAllPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
 
@@ -13,9 +20,7 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   //* calling customized hook to fetch posts data
-  const {data: posts, refetch} = useAppwrite
-  (getAllPosts());
-
+  const { data: posts, refetch } = useAppwrite(getAllPosts());
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -25,9 +30,7 @@ const Home = () => {
 
     setRefreshing(false);
   };
-console.log(posts);
 
-  
   return (
     <SafeAreaView className="bg-primary h-full">
       //* FlatList is designed for rendering dynamic lists based on data.
@@ -36,7 +39,13 @@ console.log(posts);
         // data={[]}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
-          <Text className="text-3xl text-white">{item.title}</Text>
+          // <Text className="text-3xl text-white">{item.title}</Text>
+          <VideoCard
+            title={item.title}
+            avatar={item.creator.avatar}
+            username={item.creator.username}
+            thumbnail={item.thumbnail}
+          />
         )}
         ListHeaderComponent={() => (
           <View className="my-6 px-4 space-y-6 ">
