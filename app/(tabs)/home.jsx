@@ -13,7 +13,7 @@ import SearchInput from "../../components/SearchInput";
 import EmptyState from "../../components/EmptyState";
 import Trending from "../../components/Trending";
 import VideoCard from "../../components/VideoCard";
-import { getAllPosts } from "../../lib/appwrite";
+import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
 
 const Home = () => {
@@ -21,6 +21,8 @@ const Home = () => {
 
   //* calling customized hook to fetch posts data
   const { data: posts, refetch } = useAppwrite(getAllPosts());
+  //* fetch latest posts
+  const { data: latestPosts } = useAppwrite(getLatestPosts());
 
   const onRefresh = async () => {
     setRefreshing(true);
@@ -30,6 +32,9 @@ const Home = () => {
 
     setRefreshing(false);
   };
+
+
+  
 
   return (
     <SafeAreaView className="bg-primary h-full">
@@ -72,7 +77,8 @@ const Home = () => {
                 Latest Videos
               </Text>
             </View>
-            <Trending posts={[{ id: 1 }, { id: 2 }, { id: 3 }] ?? []} />
+            {/* display horizental list that will swap from left till right in a portrait mode */}
+            <Trending posts={latestPosts} />
           </View>
         )}
         ListEmptyComponent={() => (

@@ -11,7 +11,6 @@
     "ios": {
       "supportsTablet": true,
       "package": "com.rn.course"
-   
     },
     "android": {
       "adaptiveIcon": {
@@ -35,6 +34,14 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+
       ]
     ],
     "experiments": {
