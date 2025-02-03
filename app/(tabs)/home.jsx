@@ -50,6 +50,7 @@ const Home = () => {
             avatar={item.creator.avatar}
             username={item.creator.username}
             thumbnail={item.thumbnail}
+            video={item.video}
           />
         )}
         ListHeaderComponent={() => (

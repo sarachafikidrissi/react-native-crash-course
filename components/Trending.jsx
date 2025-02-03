@@ -11,6 +11,7 @@ import * as Animatable from "react-native-animatable";
 import { icons } from "../constants";
 // import { Video, ResizeMode } from "expo-av";
 import { Video, ResizeMode } from "expo-av";
+import { BounceIn } from "react-native-reanimated";
 const zoomIn = {
   0: {
     scale: 0.9,
@@ -31,10 +32,6 @@ const zoomOut = {
 
 const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
-  
-
-  
-  
 
   return (
     // * view that allows us to do animations within it
@@ -43,6 +40,9 @@ const TrendingItem = ({ activeItem, item }) => {
       animation={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
     >
+      <Animatable.Text animation="fadeInDown" duration={1500} className="text-white">
+        Hello World!
+      </Animatable.Text>
       {play ? (
         <Video
           source={{ uri: item.video }}
@@ -51,13 +51,13 @@ const TrendingItem = ({ activeItem, item }) => {
             height: 288,
             borderRadius: 35,
             marginTop: 3,
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
           }}
           resizeMode={ResizeMode.CONTAIN}
           useNativeControls
           shouldPlay
           onPlaybackStatusUpdate={(status) => {
-            if(status.didJustFinish){
+            if (status.didJustFinish) {
               setPlay(false);
             }
           }}
@@ -67,7 +67,7 @@ const TrendingItem = ({ activeItem, item }) => {
           className="relative justify-center items-center "
           activeOpacity={0.7}
           onPress={() => {
-           setPlay(true)
+            setPlay(true);
           }}
         >
           <ImageBackground
@@ -78,7 +78,6 @@ const TrendingItem = ({ activeItem, item }) => {
           <Image source={icons.play} className="w-12 h-12 absolute " />
         </TouchableOpacity>
       )}
-   
     </Animatable.View>
   );
 };
@@ -115,9 +114,4 @@ const Trending = ({ posts }) => {
   );
 };
 
-
-
 export default Trending;
-
-
-
