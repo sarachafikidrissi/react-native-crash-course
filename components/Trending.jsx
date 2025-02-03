@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import * as Animatable from "react-native-animatable";
 import { icons } from "../constants";
 // import { Video, ResizeMode } from "expo-av";
-import { Video } from "expo-video";
+import { Video, ResizeMode } from "expo-av";
 const zoomIn = {
   0: {
     scale: 0.9,
@@ -31,7 +31,10 @@ const zoomOut = {
 
 const TrendingItem = ({ activeItem, item }) => {
   const [play, setPlay] = useState(false);
+  
 
+  
+  
 
   return (
     // * view that allows us to do animations within it
@@ -43,7 +46,21 @@ const TrendingItem = ({ activeItem, item }) => {
       {play ? (
         <Video
           source={{ uri: item.video }}
-          className="w-52 h-72 rounded-[35px] mt-3 bg-white/10"
+          style={{
+            width: 208,
+            height: 288,
+            borderRadius: 35,
+            marginTop: 3,
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          }}
+          resizeMode={ResizeMode.CONTAIN}
+          useNativeControls
+          shouldPlay
+          onPlaybackStatusUpdate={(status) => {
+            if(status.didJustFinish){
+              setPlay(false);
+            }
+          }}
         />
       ) : (
         <TouchableOpacity
@@ -101,3 +118,6 @@ const Trending = ({ posts }) => {
 
 
 export default Trending;
+
+
+
