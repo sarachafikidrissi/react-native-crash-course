@@ -20,9 +20,10 @@ const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
 
   //* calling customized hook to fetch posts data
-  const { data: posts, refetch } = useAppwrite(getAllPosts());
+  // Always pass function references to useAppwrite()
+  const { data: posts, refetch } = useAppwrite(getAllPosts);
   //* fetch latest posts
-  const { data: latestPosts } = useAppwrite(getLatestPosts());
+  const { data: latestPosts } = useAppwrite(getLatestPosts);
 
   const onRefresh = async () => {
     setRefreshing(true);

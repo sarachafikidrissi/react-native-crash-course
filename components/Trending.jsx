@@ -40,9 +40,7 @@ const TrendingItem = ({ activeItem, item }) => {
       animation={activeItem === item.$id ? zoomIn : zoomOut}
       duration={500}
     >
-      <Animatable.Text animation="fadeInDown" duration={1500} className="text-white">
-        Hello World!
-      </Animatable.Text>
+    
       {play ? (
         <Video
           source={{ uri: item.video }}
