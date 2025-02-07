@@ -15,9 +15,11 @@ import Trending from "../../components/Trending";
 import VideoCard from "../../components/VideoCard";
 import { getAllPosts, getLatestPosts } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false);
+  const {user} = useGlobalContext();
 
   //* calling customized hook to fetch posts data
   // Always pass function references to useAppwrite()
@@ -62,7 +64,7 @@ const Home = () => {
                   Welcome again
                 </Text>
                 <Text className="text-2xl font-psemibold text-white">
-                  First App
+                  {user?.username}
                 </Text>
               </View>
               <View classNamemt="mt-1.5">

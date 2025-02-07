@@ -28,9 +28,7 @@ const SignIn = () => {
       await signIn(form.email, form.password);
       const result = getCurrentUser()
       setUser(result)
-      setIsLoggedIn(true)
-      console.log('pressed');
-      
+      setIsLoggedIn(true)      
       // set it to globale state using context
       
       //^ after sign in up let user go to home screen

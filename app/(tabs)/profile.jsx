@@ -12,20 +12,36 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { icons, images } from "../../constants";
 import EmptyState from "../../components/EmptyState";
 import VideoCard from "../../components/VideoCard";
-import { getUserPosts } from "../../lib/appwrite";
+import { getUserPosts, signOut } from "../../lib/appwrite";
 import useAppwrite from "../../lib/useAppwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
 import InfoBox from "../../components/InfoBox";
+import { router } from "expo-router";
 
 /**
  *
  * @returns videos that current user has created
  */
 const Profile = () => {
-  const { user } = useGlobalContext();
+  const { user, setUser, isLoggedin, setIsLoggedIn } = useGlobalContext();
   const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
 
-  const logout = () => {};
+  /**
+   * this function called when the user clicked on logout icon
+   */
+  const logout = async () => {
+    await signOut();
+    setUser(null);
+    setIsLoggedIn(false);
+
+    /**
+     * replace the current screen to sign in screen 
+     * you can't go back to prev screen if you swipe 
+     * this is the difference between replace and pusuh
+     */
+   
+    router.replace('/sign-in')
+  };
 
   return (
     <SafeAreaView className="bg-primary h-full">
