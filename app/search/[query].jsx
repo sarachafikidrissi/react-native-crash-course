@@ -18,16 +18,9 @@ import { useLocalSearchParams } from "expo-router";
 
 const Search = () => {
   const { query } = useLocalSearchParams();
-  console.log("this is query", query);
-  
-  // const { data: posts = [], refetch } = useAppwrite(() => searchPosts(query));
-  const { data: posts, isLoading, refetch } = useAppwrite(() => searchPosts(query));
 
+  const { data: posts, refetch } = useAppwrite(() => searchPosts(query));
 
-  console.log("this is posts: ", posts._j);
-  console.log("Type of posts:", typeof posts);
-  
-  
   
   // const postArray = posts?._j;
   //* this will be called anytime the query changes
