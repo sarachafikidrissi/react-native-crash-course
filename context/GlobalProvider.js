@@ -14,6 +14,8 @@ const GlobalProvider = ({children}) => {
     useEffect(() => {
         getCurrentUser()
             .then((res) => { //^ since getCurrentUser is an async we are gonna use .then
+                
+                
                 if(res) {
                     //^ in case there is a user 
                     setIsLoggedIn(true); 
